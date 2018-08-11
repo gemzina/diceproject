@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<h1>Dice Game</h1>
+<h2>Let's play dice!</h2>
+<p>
+  Place your bet! You have <%= @game.chips %> chips left.
+</p>
+<form action="/games/<%= @game.id %>/make_bet" method="post">
+  <p>
+    <label>Bet amount</label>
+    <input type="number"/>
+  </p>
+  <p>
+    <label>Guess</label>
+    <input type="number"/>
+  </p>
+  <p>
+    <input type="submit" value="Make a bet"/>
+  </p>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
+<!-- <%= link_to 'Edit', edit_game_path(@game) %> | -->
+<%= link_to 'Back', games_path %>
