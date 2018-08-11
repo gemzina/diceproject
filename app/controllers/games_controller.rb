@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :make_bet]
 
   # GET /games
   # GET /games.json
@@ -62,8 +62,21 @@ class GamesController < ApplicationController
   end
 
   def make_bet
-    raise "We are awesome"
+    dice_roll = rand 1..6
+    bet =   params["bet"].to_i
+    guess =   params["guess"].to_i
+
+    if dice_roll == guess
+      redirect_to @game, notice: 'You guessed correctly.'
+      @game.update(chips: @game.chips + bet)
+    else
+      redirect_to @game, notice: "Your guess is wrong. The computer rolled #{dice_roll}"
+      @game.update(chips: @game.chips - bet)
+    end
+
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
