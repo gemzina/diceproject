@@ -25,6 +25,10 @@
 <h2>
   GAME OVER. Don't quit your day job unless your day job is playing dice.
 </h2>
+<script>
+  var audio = new Audio('<%= asset_path "game-over.wav" %>');
+  audio.play();
+</script>
 <% end %>
 
 <!-- <%= link_to 'Edit', edit_game_path(@game) %> | -->
