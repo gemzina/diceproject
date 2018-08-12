@@ -1,17 +1,16 @@
-<p id="notice"><%= notice %></p>
-<h1>Dice Game</h1>
-
+<h1 style="color:deeppink; font-size:50px; line-height:50px;">Dice Game</h1>
 <% if @game.chips > 0 %>
-  <h2>Let's play dice!</h2>
-  <p>
+  <h2 style="color:#FFE000; font-size:40px; line-height:40px;">Let's play dice!</h2>
+  <h3 style="font-size:30px; line-height:30px; color:aqua;" id="notice"><%= notice %></h3>
+  <p style="font-size:20px; line-height:20px; color:white;">
     Place your bet! You have <%= @game.chips %> chips left.
   </p>
   <form action="/games/<%= @game.id %>/make_bet" method="post">
-    <p>
+    <p style="font-size:20px; line-height:20px; color:white;">
       <label>Bet amount</label>
       <input type="number" name = "bet"/>
     </p>
-    <p>
+    <p style="font-size:20px; line-height:20px; color:white;">
       <label>Guess</label>
       <input type="number" name = "guess"/>
     </p>
@@ -22,10 +21,10 @@
   </form>
 
 <% else %>
+<h3 id="notice"><%= notice %></h3>
 <h2>
   GAME OVER. Don't quit your day job unless your day job is playing dice.
 </h2>
-
 <% end %>
 
 <!-- <%= link_to 'Edit', edit_game_path(@game) %> | -->

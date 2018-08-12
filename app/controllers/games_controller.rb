@@ -65,12 +65,13 @@ class GamesController < ApplicationController
     dice_roll = rand 1..6
     bet =   params["bet"].to_i
     guess =   params["guess"].to_i
+    statement = ["You sand-bagging son of a b.", " I fart in your general direction! Your mother was a hamster and your father smelt of elderberries!", "You lose, have you tried turning it off and on again?", "You scruffy nerfherder.", "You clanking, clattering collection of caliginous junk!"]
 
     if dice_roll == guess
       redirect_to @game, notice: 'You guessed correctly.'
       @game.update(chips: @game.chips + bet)
     else
-      redirect_to @game, notice: "Your guess is wrong. The computer rolled #{dice_roll}"
+      redirect_to @game, notice: "#{statement.sample} The computer rolled #{dice_roll}"
       @game.update(chips: @game.chips - bet)
     end
 
